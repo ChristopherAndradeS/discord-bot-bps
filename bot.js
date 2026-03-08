@@ -14,6 +14,8 @@ client.once('ready', () => {
 
 client.on('messageCreate', message => {
 
+  console.log("Mensagem recebida:", message.content);
+  
   if (message.author.bot) return;
 
   if (message.content === "!ping") {
