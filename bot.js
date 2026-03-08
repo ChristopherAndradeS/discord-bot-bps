@@ -17,9 +17,16 @@ client.on('messageCreate', message => {
   if (message.author.bot) return;
 
   if (message.content === "!ping") {
-    message.reply("Pong do servidor SA-MP 🚀");
+    message.reply("Pong 🚀");
   }
 
 });
 
 client.login(process.env.TOKEN);
+
+const http = require("http");
+
+http.createServer((req, res) => {
+  res.write("Bot online");
+  res.end();
+}).listen(process.env.PORT || 3000);
