@@ -15,7 +15,7 @@ client.once('ready', () => {
 client.on('messageCreate', message => {
 
   console.log("Mensagem recebida:", message.content);
-  
+
   if (message.author.bot) return;
 
   if (message.content === "!ping") {
@@ -23,6 +23,8 @@ client.on('messageCreate', message => {
   }
 
 });
+
+console.log("TOKEN carregado:", process.env.TOKEN ? "SIM" : "NÃO");
 
 client.login(process.env.TOKEN);
 
