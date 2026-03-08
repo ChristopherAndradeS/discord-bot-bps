@@ -1,5 +1,7 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 
+console.log("Iniciando bot...");
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -8,25 +10,22 @@ const client = new Client({
   ]
 });
 
-client.once('ready', () => {
+console.log("Tentando conectar ao Discord...");
+
+client.once("ready", () => {
   console.log(`Bot online como ${client.user.tag}`);
 });
 
-client.on('messageCreate', message => {
-
-  console.log("Mensagem recebida:", message.content);
-
-  if (message.author.bot) return;
-
-  if (message.content === "!ping") {
-    message.reply("Pong 🚀");
-  }
-
+client.on("error", (err) => {
+  console.error("Erro no client:", err);
 });
 
+client.login(process.env.TOKEN).then(() => {
+  console.log("Login enviado para Discord");
+}).catch(err => {
+  console.error("Erro ao logar:", err);
+});
 console.log("TOKEN carregado:", process.env.TOKEN ? "SIM" : "NÃO");
-
-client.login(process.env.TOKEN);
 
 const http = require("http");
 
